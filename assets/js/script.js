@@ -316,8 +316,8 @@ function initializeProcessFiltering() {
                         // Staggered entrance with sophisticated timing
                         setTimeout(() => {
                             card.classList.remove('entering');
-                        }, 500);
-                    }, index * 80); // Increased stagger for better effect
+                        }, index * 80); // Increased stagger for better effect
+                    });
                 }, 200);
                 
                 // Phase 3: Cleanup and final state
