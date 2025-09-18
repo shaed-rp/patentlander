@@ -583,5 +583,20 @@
 
     <!-- JavaScript -->
     <script src="assets/js/script.js"></script>
+    
+    <!-- Vercel Speed Insights -->
+    <script>
+        (function() {
+            var script = document.createElement('script');
+            script.src = 'https://unpkg.com/@vercel/speed-insights@latest/dist/index.js';
+            script.async = true;
+            script.onload = function() {
+                if (window.injectSpeedInsights) {
+                    window.injectSpeedInsights();
+                }
+            };
+            document.head.appendChild(script);
+        })();
+    </script>
 </body>
 </html>

@@ -49,5 +49,8 @@
     "index.html",
     "assets/",
     "README.md"
-  ]
+  ],
+  "dependencies": {
+    "@vercel/speed-insights": "^1.2.0"
+  }
 }
