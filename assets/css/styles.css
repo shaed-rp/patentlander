@@ -1223,6 +1223,45 @@ body {
 
 /* Patent Claims - Now using consistent innovation-transformation styling */
 
+.claims-structure-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.claims-segment {
+    text-align: center;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: rgba(139, 92, 246, 0.05);
+    border: 1px solid rgba(139, 92, 246, 0.1);
+    transition: all 0.3s ease;
+}
+
+.claims-segment:hover {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(139, 92, 246, 0.2);
+    transform: translateY(-2px);
+}
+
+.claims-segment strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Responsive design for claims structure */
+@media (max-width: 768px) {
+    .claims-structure-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .claims-segment {
+        padding: 0.5rem;
+    }
+}
+
 .claims-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1274,7 +1313,16 @@ body {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.claim-subtitle {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--primary);
     margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .claim-description {
