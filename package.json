@@ -7,7 +7,8 @@
     "start": "python -m http.server 8000",
     "serve": "npx serve .",
     "build": "echo 'Static site - no build required'",
-    "deploy": "echo 'Deploy to GitHub Pages via repository settings'"
+    "deploy": "echo 'Deploy to GitHub Pages via repository settings'",
+    "vercel-build": "echo 'Static site - no build required'"
   },
   "keywords": [
     "patent",
@@ -24,13 +25,13 @@
     "company": "SHAED, Inc."
   },
   "license": "MIT",
-  "homepage": "https://github.com/username/patent-site",
+  "homepage": "https://github.com/shaed-rp/patentlander",
   "repository": {
     "type": "git",
-    "url": "https://github.com/username/patent-site.git"
+    "url": "https://github.com/shaed-rp/patentlander.git"
   },
   "bugs": {
-    "url": "https://github.com/username/patent-site/issues"
+    "url": "https://github.com/shaed-rp/patentlander/issues"
   },
   "engines": {
     "node": ">=14.0.0"
