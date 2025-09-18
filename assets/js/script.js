@@ -1,8 +1,20 @@
 // Patent Site Interactive Dashboard JavaScript
 
+// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - Initializing app...');
     initializeApp();
 });
+
+// Fallback initialization for cases where DOMContentLoaded already fired
+if (document.readyState === 'loading') {
+    // DOM is still loading, wait for DOMContentLoaded
+    console.log('DOM still loading, waiting for DOMContentLoaded...');
+} else {
+    // DOM is already loaded, initialize immediately
+    console.log('DOM already loaded, initializing immediately...');
+    initializeApp();
+}
 
 function initializeApp() {
     // Initialize performance optimizations first
@@ -55,17 +67,31 @@ function initializePerformanceOptimizations() {
 
 // Professional Tab Navigation System - No Blinking
 function initializeTabNavigation() {
+    console.log('Initializing tab navigation...');
+    
     const navTabs = document.querySelectorAll('.nav-tab');
     const tabContents = document.querySelectorAll('.tab-content');
     const navWrapper = document.querySelector('.nav-wrapper');
     const contentWrapper = document.querySelector('.content-wrapper');
+    
+    console.log(`Found ${navTabs.length} nav tabs and ${tabContents.length} tab contents`);
+    
+    if (navTabs.length === 0) {
+        console.error('No nav tabs found!');
+        return;
+    }
     
     // Debounce rapid clicks to prevent animation conflicts
     let isTransitioning = false;
     
     // Professional crossfade tab change handler
     const handleTabChange = (tabId) => {
-        if (isTransitioning) return;
+        console.log(`Switching to tab: ${tabId}`);
+        
+        if (isTransitioning) {
+            console.log('Transition in progress, ignoring click');
+            return;
+        }
         
         const targetTab = document.querySelector(`[data-tab="${tabId}"]`);
         const targetContent = document.getElementById(tabId);
@@ -76,9 +102,13 @@ function initializeTabNavigation() {
         }
         
         // If already active, do nothing
-        if (targetTab.classList.contains('active')) return;
+        if (targetTab.classList.contains('active')) {
+            console.log('Tab already active, ignoring');
+            return;
+        }
         
         isTransitioning = true;
+        console.log('Starting tab transition...');
         
         // Update tab states immediately for responsive feel
         navTabs.forEach(tab => {
@@ -116,6 +146,7 @@ function initializeTabNavigation() {
                     targetContent.style.opacity = '';
                     targetContent.style.transform = '';
                     isTransitioning = false;
+                    console.log('Tab transition completed');
                 }, 200);
             }, 150);
         } else {
@@ -130,15 +161,20 @@ function initializeTabNavigation() {
                 targetContent.style.opacity = '';
                 targetContent.style.transform = '';
                 isTransitioning = false;
+                console.log('Tab transition completed');
             }, 200);
         }
     };
     
     // Add click handlers to all tabs with performance optimization
-    navTabs.forEach(tab => {
+    navTabs.forEach((tab, index) => {
+        console.log(`Setting up click handler for tab ${index}: ${tab.getAttribute('data-tab')}`);
+        
         // Use passive listeners for better performance
         tab.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
+            console.log(`Tab clicked: ${this.getAttribute('data-tab')}`);
             const targetTab = this.getAttribute('data-tab');
             handleTabChange(targetTab);
         }, { passive: false });
@@ -153,13 +189,13 @@ function initializeTabNavigation() {
                 e.preventDefault();
                 const currentIndex = Array.from(navTabs).indexOf(this);
                 let nextIndex;
-                
+
                 if (e.key === 'ArrowLeft') {
                     nextIndex = currentIndex > 0 ? currentIndex - 1 : navTabs.length - 1;
                 } else {
                     nextIndex = currentIndex < navTabs.length - 1 ? currentIndex + 1 : 0;
                 }
-                
+
                 const nextTab = navTabs[nextIndex];
                 const nextTabId = nextTab.getAttribute('data-tab');
                 handleTabChange(nextTabId);
@@ -588,11 +624,32 @@ window.addEventListener('error', function(e) {
 });
 
 // Export functions for potential external use
+// Test function to verify tab functionality
+function testTabNavigation() {
+    console.log('Testing tab navigation...');
+    const tabs = document.querySelectorAll('.nav-tab');
+    console.log(`Found ${tabs.length} tabs`);
+    
+    tabs.forEach((tab, index) => {
+        const tabId = tab.getAttribute('data-tab');
+        const content = document.getElementById(tabId);
+        console.log(`Tab ${index}: ${tabId} - Content exists: ${!!content}`);
+    });
+    
+    // Test clicking the first non-active tab
+    const nonActiveTabs = Array.from(tabs).filter(tab => !tab.classList.contains('active'));
+    if (nonActiveTabs.length > 0) {
+        console.log('Testing click on:', nonActiveTabs[0].getAttribute('data-tab'));
+        nonActiveTabs[0].click();
+    }
+}
+
 window.PatentDashboard = {
     initializeApp,
     initializeTabNavigation,
     initializeProcessFiltering,
     initializeModalSystem,
     initializeAnimations,
-    initializeResponsiveFeatures
+    initializeResponsiveFeatures,
+    testTabNavigation
 };
