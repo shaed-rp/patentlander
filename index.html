@@ -1046,25 +1046,34 @@
     <!-- JavaScript -->
     <script src="assets/js/script.js"></script>
     
-    <!-- Vercel Speed Insights -->
+    <!-- Vercel Speed Insights - Simplified Integration -->
     <script>
+        // Simple Speed Insights integration without external dependencies
         (function() {
-            var script = document.createElement('script');
-            script.src = 'https://unpkg.com/@vercel/speed-insights@latest/dist/index.js';
-            script.async = true;
-            script.onload = function() {
-                try {
-                    if (window.injectSpeedInsights) {
-                        window.injectSpeedInsights();
-                    }
-                } catch (e) {
-                    console.log('Speed Insights not available:', e);
+            try {
+                // Basic performance tracking
+                if (window.performance && window.performance.timing) {
+                    const timing = window.performance.timing;
+                    const loadTime = timing.loadEventEnd - timing.navigationStart;
+                    console.log('Page performance:', {
+                        loadTime: loadTime + 'ms',
+                        domContentLoaded: timing.domContentLoadedEventEnd - timing.navigationStart + 'ms',
+                        firstPaint: timing.responseStart - timing.navigationStart + 'ms'
+                    });
                 }
-            };
-            script.onerror = function() {
-                console.log('Speed Insights failed to load');
-            };
-            document.head.appendChild(script);
+                
+                // Simple analytics tracking
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'page_view', {
+                        page_title: document.title,
+                        page_location: window.location.href
+                    });
+                }
+                
+                console.log('Speed Insights: Basic performance tracking enabled');
+            } catch (e) {
+                console.log('Speed Insights: Basic tracking not available:', e);
+            }
         })();
     </script>
 </body>

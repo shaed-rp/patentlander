@@ -569,8 +569,8 @@ function debounce(func, wait) {
 }
 
 // Add CSS animation classes
-const style = document.createElement('style');
-style.textContent = `
+const animationStyle = document.createElement('style');
+animationStyle.textContent = `
     .fade-in-up {
         animation: fadeInUp 0.6s ease forwards;
     }
@@ -604,7 +604,7 @@ style.textContent = `
         background: var(--primary-dark);
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(animationStyle);
 
 // Performance monitoring
 function logPerformance() {
