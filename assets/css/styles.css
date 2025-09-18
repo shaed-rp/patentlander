@@ -456,6 +456,25 @@ body {
     box-shadow: var(--shadow-xl);
 }
 
+/* Process Banner - Always Visible Above Tabs */
+.process-banner {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: var(--space-6) 0;
+    margin-bottom: var(--space-4);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive design for process banner */
+@media (max-width: 768px) {
+    .process-banner {
+        padding: var(--space-4) 0;
+        margin-bottom: var(--space-2);
+    }
+}
+
 /* Navigation */
 .nav-wrapper {
     background: var(--light);
