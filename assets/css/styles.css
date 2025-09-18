@@ -328,31 +328,32 @@ body {
     font-weight: 600;
 }
 
-/* Statistics Section - Professional Glass-Morphism Design */
+/* Statistics Section - Clean Professional Design */
 .stats-section {
     display: flex;
-    gap: 16px;
-    padding: 32px 0;
+    gap: 20px;
+    padding: 40px 20px;
     position: relative;
     max-width: 1200px;
     margin: 0 auto var(--space-8) auto;
+    /* Light grey to white gradient background */
+    background: linear-gradient(
+        135deg,
+        #f8f9fa 0%,
+        #ffffff 100%
+    );
+    border-radius: 16px;
 }
 
 .stat-card {
     flex: 1;
-    padding: 20px;
+    padding: 24px 20px;
     border-radius: 12px;
     text-align: center;
     position: relative;
-    /* Glass-morphism effect for sophistication */
-    background: linear-gradient(
-        135deg,
-        rgba(139, 92, 246, 0.05) 0%,
-        rgba(168, 85, 247, 0.02) 100%
-    );
-    border: 1px solid rgba(168, 85, 247, 0.2);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    /* Pure white background */
+    background: #ffffff;
+    border: 1px solid #e9ecef;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     overflow: hidden;
@@ -361,37 +362,16 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-/* Add subtle accent indicator */
-.stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 2px;
-    background: linear-gradient(90deg, 
-        transparent 0%,
-        #A78BFA 50%,
-        transparent 100%
-    );
-    opacity: 0.6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .stat-card:hover {
-    background: linear-gradient(
-        135deg,
-        rgba(139, 92, 246, 0.08) 0%,
-        rgba(168, 85, 247, 0.04) 100%
-    );
-    border-color: rgba(168, 85, 247, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #dee2e6;
 }
 
-/* Primary focus: Readable numbers with gradient text */
+/* Primary focus: Purple gradient numbers matching header */
 .stat-number {
     font-size: 40px;
     font-weight: 700;
@@ -399,19 +379,16 @@ body {
     line-height: 1;
     margin-bottom: 8px;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    /* Bright gradient for visibility while maintaining brand */
+    /* Purple gradient matching header colors */
     background: linear-gradient(
         135deg,
-        #E9D5FF 0%,    /* Light lavender */
-        #FBBF24 50%,   /* Warm accent */
-        #C084FC 100%   /* Bright purple */
+        #6B5B95 0%,    /* Header purple start */
+        #8B7FB8 100%   /* Header purple end */
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     /* Fallback for browsers without gradient text support */
-    color: #E9D5FF;
-    /* Subtle glow for depth */
-    filter: drop-shadow(0 0 8px rgba(196, 181, 253, 0.3));
+    color: #6B5B95;
 }
 
 /* Special handling for text values */
@@ -420,54 +397,51 @@ body {
     letter-spacing: -0.5px;
 }
 
-/* Secondary focus: Clear labels */
+/* Secondary focus: Medium grey labels */
 .stat-label {
     font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #A78BFA;  /* Lighter purple for visibility */
-    opacity: 0.9;
+    color: #6c757d;  /* Medium grey */
     line-height: 1.2;
 }
 
 /* Dark mode support for statistics */
 @media (prefers-color-scheme: dark) {
-    .stat-card {
+    .stats-section {
         background: linear-gradient(
             135deg,
-            rgba(139, 92, 246, 0.12) 0%,
-            rgba(168, 85, 247, 0.08) 100%
+            #2d3748 0%,
+            #1a202c 100%
         );
-        border-color: rgba(168, 85, 247, 0.3);
+    }
+    
+    .stat-card {
+        background: #2d3748;
+        border-color: #4a5568;
     }
     
     .stat-card:hover {
-        background: linear-gradient(
-            135deg,
-            rgba(139, 92, 246, 0.16) 0%,
-            rgba(168, 85, 247, 0.12) 100%
-        );
-        border-color: rgba(168, 85, 247, 0.4);
+        background: #374151;
+        border-color: #6b7280;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
     
     .stat-number {
         /* Enhanced gradient for dark mode */
         background: linear-gradient(
             135deg,
-            #F3E8FF 0%,    /* Very light lavender */
-            #FDE047 50%,    /* Bright yellow */
-            #DDD6FE 100%    /* Light purple */
+            #8B7FB8 0%,    /* Lighter purple for dark mode */
+            #A78BFA 100%    /* Bright purple for dark mode */
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        color: #F3E8FF;
-        filter: drop-shadow(0 0 12px rgba(243, 232, 255, 0.4));
+        color: #8B7FB8;
     }
     
     .stat-label {
-        color: #C4B5FD;  /* Medium-light purple for dark mode */
-        opacity: 1;
+        color: #a0aec0;  /* Light grey for dark mode */
     }
 }
 
@@ -1842,12 +1816,12 @@ body {
     .stats-section {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        padding: 24px 0;
+        gap: 16px;
+        padding: 30px 16px;
     }
     
     .stat-card {
-        padding: 16px 12px;
+        padding: 20px 16px;
         min-height: 100px;
     }
     
@@ -1881,12 +1855,12 @@ body {
     .stats-section {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 20px 0;
+        gap: 16px;
+        padding: 24px 16px;
     }
     
     .stat-card {
-        padding: 16px 12px;
+        padding: 20px 16px;
         min-height: 90px;
     }
     
