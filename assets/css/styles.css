@@ -879,6 +879,9 @@ body {
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
 }
 
 .impact-card::before {
@@ -905,29 +908,42 @@ body {
 
 .impact-icon {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem auto;
     display: block;
     color: var(--primary);
+    text-align: center;
+    width: 100%;
 }
 
 .impact-title {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--dark);
-    margin-bottom: 0.75rem;
+    margin: 0 0 0.75rem 0;
+    text-align: center;
+    line-height: 1.3;
 }
 
 .impact-description {
     color: var(--gray);
-    line-height: 1.6;
+    line-height: 1.4;
     font-size: 0.95rem;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem 0;
+    text-align: center;
+    min-height: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .impact-benefits {
     list-style: none;
     padding: 0;
     margin: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .impact-benefits li {
@@ -938,6 +954,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    line-height: 1.4;
 }
 
 .impact-benefits li:last-child {
@@ -949,6 +966,8 @@ body {
     color: var(--success);
     font-weight: bold;
     font-size: 1rem;
+    flex-shrink: 0;
+    width: 1rem;
 }
 
 /* Data Pipeline */
