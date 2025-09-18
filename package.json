@@ -1,0 +1,52 @@
+{
+  "name": "mobility-platform-patent-dashboard",
+  "version": "1.0.0",
+  "description": "Interactive analysis dashboard for Mobility Platform Patent Application #19/212,501",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "build": "echo 'Static site - no build required'",
+    "deploy": "echo 'Deploy to GitHub Pages via repository settings'"
+  },
+  "keywords": [
+    "patent",
+    "mobility",
+    "ai",
+    "dashboard",
+    "vehicle-manufacturing",
+    "interactive",
+    "responsive",
+    "web-application"
+  ],
+  "author": {
+    "name": "Ryan Pritchard",
+    "company": "SHAED, Inc."
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/username/patent-site",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/patent-site.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/patent-site/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "devDependencies": {
+    "serve": "^14.0.0"
+  },
+  "files": [
+    "index.html",
+    "assets/",
+    "README.md"
+  ]
+}
