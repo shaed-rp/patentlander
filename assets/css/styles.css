@@ -328,115 +328,146 @@ body {
     font-weight: 600;
 }
 
-/* Statistics Section - Refined for Better Visibility */
+/* Statistics Section - Professional Glass-Morphism Design */
 .stats-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: var(--space-4);
-    margin-bottom: var(--space-8);
-    padding: var(--space-6) 0;
+    display: flex;
+    gap: 16px;
+    padding: 32px 0;
+    position: relative;
     max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto var(--space-8) auto;
 }
 
 .stat-card {
-    background: var(--white);
-    border-radius: var(--radius-lg);
-    padding: var(--space-6);
+    flex: 1;
+    padding: 20px;
+    border-radius: 12px;
     text-align: center;
     position: relative;
-    overflow: hidden;
-    transition: all 0.2s ease;
+    /* Glass-morphism effect for sophistication */
+    background: linear-gradient(
+        135deg,
+        rgba(139, 92, 246, 0.05) 0%,
+        rgba(168, 85, 247, 0.02) 100%
+    );
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    box-shadow: var(--shadow-sm);
-    /* Enhanced visibility and accessibility */
+    overflow: hidden;
     min-height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgba(139, 92, 246, 0.15);
 }
 
-/* Consistent purple theme with subtle color accents */
-.stat-card:nth-child(1) {
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    background: rgba(139, 92, 246, 0.05);
-}
-
-.stat-card:nth-child(2) {
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    background: rgba(139, 92, 246, 0.05);
-}
-
-.stat-card:nth-child(3) {
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    background: rgba(139, 92, 246, 0.05);
-}
-
-.stat-card:nth-child(4) {
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    background: rgba(139, 92, 246, 0.05);
-}
-
-.stat-card:nth-child(5) {
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    background: rgba(139, 92, 246, 0.05);
-}
-
-.stat-card:nth-child(6) {
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    background: rgba(139, 92, 246, 0.05);
+/* Add subtle accent indicator */
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        #A78BFA 50%,
+        transparent 100%
+    );
+    opacity: 0.6;
 }
 
 .stat-card:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--primary);
-    background: rgba(139, 92, 246, 0.08);
+    background: linear-gradient(
+        135deg,
+        rgba(139, 92, 246, 0.08) 0%,
+        rgba(168, 85, 247, 0.04) 100%
+    );
+    border-color: rgba(168, 85, 247, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
 }
 
+/* Primary focus: Readable numbers with gradient text */
 .stat-number {
-    font-size: 36px;
+    font-size: 40px;
     font-weight: 700;
-    color: #8b5cf6;
-    margin-bottom: 4px;
-    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    margin-bottom: 8px;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* Bright gradient for visibility while maintaining brand */
+    background: linear-gradient(
+        135deg,
+        #E9D5FF 0%,    /* Light lavender */
+        #FBBF24 50%,   /* Warm accent */
+        #C084FC 100%   /* Bright purple */
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Fallback for browsers without gradient text support */
+    color: #E9D5FF;
+    /* Subtle glow for depth */
+    filter: drop-shadow(0 0 8px rgba(196, 181, 253, 0.3));
 }
 
-/* Special styling for text values like "AI/ML" and "1000+" */
+/* Special handling for text values */
 .stat-number.text-value {
     font-size: 28px;
+    letter-spacing: -0.5px;
 }
 
+/* Secondary focus: Clear labels */
 .stat-label {
-    font-size: 13px;
-    font-weight: 500;
-    color: #64748b;
+    font-size: 11px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    color: #A78BFA;  /* Lighter purple for visibility */
+    opacity: 0.9;
     line-height: 1.2;
 }
 
 /* Dark mode support for statistics */
 @media (prefers-color-scheme: dark) {
     .stat-card {
-        background: rgba(139, 92, 246, 0.08);
-        border-color: rgba(139, 92, 246, 0.2);
+        background: linear-gradient(
+            135deg,
+            rgba(139, 92, 246, 0.12) 0%,
+            rgba(168, 85, 247, 0.08) 100%
+        );
+        border-color: rgba(168, 85, 247, 0.3);
     }
     
     .stat-card:hover {
-        background: rgba(139, 92, 246, 0.12);
+        background: linear-gradient(
+            135deg,
+            rgba(139, 92, 246, 0.16) 0%,
+            rgba(168, 85, 247, 0.12) 100%
+        );
+        border-color: rgba(168, 85, 247, 0.4);
     }
     
     .stat-number {
-        color: #a78bfa;
+        /* Enhanced gradient for dark mode */
+        background: linear-gradient(
+            135deg,
+            #F3E8FF 0%,    /* Very light lavender */
+            #FDE047 50%,    /* Bright yellow */
+            #DDD6FE 100%    /* Light purple */
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: #F3E8FF;
+        filter: drop-shadow(0 0 12px rgba(243, 232, 255, 0.4));
     }
     
     .stat-label {
-        color: #94a3b8;
+        color: #C4B5FD;  /* Medium-light purple for dark mode */
+        opacity: 1;
     }
 }
 
@@ -1847,22 +1878,23 @@ body {
     }
     
     .stats-section {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-3);
-        padding: var(--space-4) 0;
+        gap: 12px;
+        padding: 24px 0;
     }
     
     .stat-card {
-        padding: var(--space-4);
+        padding: 16px 12px;
         min-height: 100px;
     }
     
     .stat-number {
-        font-size: 28px;
+        font-size: 32px;
     }
     
     .stat-number.text-value {
-        font-size: 22px;
+        font-size: 24px;
     }
     
     .patent-details {
@@ -1885,26 +1917,28 @@ body {
     }
     
     .stats-section {
+        display: grid;
         grid-template-columns: 1fr;
-        gap: var(--space-3);
-        padding: var(--space-3) 0;
+        gap: 12px;
+        padding: 20px 0;
     }
     
     .stat-card {
-        padding: var(--space-3);
-        min-height: 80px;
+        padding: 16px 12px;
+        min-height: 90px;
     }
     
     .stat-number {
-        font-size: 24px;
+        font-size: 28px;
     }
     
     .stat-number.text-value {
-        font-size: 20px;
+        font-size: 22px;
     }
     
     .stat-label {
-        font-size: 12px;
+        font-size: 10px;
+        letter-spacing: 0.8px;
     }
     
     .content-wrapper {
