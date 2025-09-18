@@ -96,42 +96,42 @@
 
         <!-- Main Dashboard -->
         <main class="dashboard">
-            <nav class="nav-wrapper">
+            <nav class="nav-wrapper" role="tablist" aria-label="Patent Dashboard Navigation">
                 <div class="nav-tabs">
-                    <button class="nav-tab active" data-tab="overview">
-                        <span class="nav-icon">🏠</span>
-                        Overview
+                    <button class="nav-tab active" data-tab="overview" role="tab" aria-selected="true" aria-controls="overview" tabindex="0">
+                        <span class="nav-icon" aria-hidden="true">🏠</span>
+                        <span>Overview</span>
                     </button>
-                    <button class="nav-tab" data-tab="process">
-                        <span class="nav-icon">⚙️</span>
-                        Process Flow
+                    <button class="nav-tab" data-tab="process" role="tab" aria-selected="false" aria-controls="process" tabindex="-1">
+                        <span class="nav-icon" aria-hidden="true">⚙️</span>
+                        <span>Process Flow</span>
                     </button>
-                    <button class="nav-tab" data-tab="matrix">
-                        <span class="nav-icon">🔧</span>
-                        Feature Matrix
+                    <button class="nav-tab" data-tab="matrix" role="tab" aria-selected="false" aria-controls="matrix" tabindex="-1">
+                        <span class="nav-icon" aria-hidden="true">🔧</span>
+                        <span>Feature Matrix</span>
                     </button>
-                    <button class="nav-tab" data-tab="data">
-                        <span class="nav-icon">📊</span>
-                        Data Pipeline
+                    <button class="nav-tab" data-tab="data" role="tab" aria-selected="false" aria-controls="data" tabindex="-1">
+                        <span class="nav-icon" aria-hidden="true">📊</span>
+                        <span>Data Pipeline</span>
                     </button>
-                    <button class="nav-tab" data-tab="architecture">
-                        <span class="nav-icon">🏗️</span>
-                        Architecture
+                    <button class="nav-tab" data-tab="architecture" role="tab" aria-selected="false" aria-controls="architecture" tabindex="-1">
+                        <span class="nav-icon" aria-hidden="true">🏗️</span>
+                        <span>Architecture</span>
                     </button>
-                    <button class="nav-tab" data-tab="claims">
-                        <span class="nav-icon">📜</span>
-                        Patent Claims
+                    <button class="nav-tab" data-tab="claims" role="tab" aria-selected="false" aria-controls="claims" tabindex="-1">
+                        <span class="nav-icon" aria-hidden="true">📜</span>
+                        <span>Patent Claims</span>
                     </button>
-                    <button class="nav-tab" data-tab="innovation">
-                        <span class="nav-icon">🚀</span>
-                        Innovation Impact
+                    <button class="nav-tab" data-tab="innovation" role="tab" aria-selected="false" aria-controls="innovation" tabindex="-1">
+                        <span class="nav-icon" aria-hidden="true">🚀</span>
+                        <span>Innovation Impact</span>
                     </button>
                 </div>
             </nav>
 
             <div class="content-wrapper">
                 <!-- Overview Tab -->
-                <div id="overview" class="tab-content active">
+                <div id="overview" class="tab-content active" role="tabpanel" aria-labelledby="overview-tab">
                     <div class="section-header">
                         <h2 class="section-title">Patent Overview</h2>
                         <p class="section-description">
@@ -213,7 +213,7 @@
                 </div>
 
                 <!-- Process Flow Tab -->
-                <div id="process" class="tab-content">
+                <div id="process" class="tab-content" role="tabpanel" aria-labelledby="process-tab">
                     <div class="section-header">
                         <h2 class="section-title">Process Flow Architecture</h2>
                         <p class="section-description">
@@ -384,7 +384,7 @@
                 </div>
 
                 <!-- Feature Matrix Tab -->
-                <div id="matrix" class="tab-content">
+                <div id="matrix" class="tab-content" role="tabpanel" aria-labelledby="matrix-tab">
                     <div class="section-header">
                         <h2 class="section-title">Feature Matrix</h2>
                         <p class="section-description">
@@ -480,7 +480,7 @@
                 </div>
 
                 <!-- Data Pipeline Tab -->
-                <div id="data" class="tab-content">
+                <div id="data" class="tab-content" role="tabpanel" aria-labelledby="data-tab">
                     <div class="section-header">
                         <h2 class="section-title">Data Pipeline Architecture</h2>
                         <p class="section-description">
@@ -556,7 +556,7 @@
                 </div>
 
                 <!-- Architecture Tab -->
-                <div id="architecture" class="tab-content">
+                <div id="architecture" class="tab-content" role="tabpanel" aria-labelledby="architecture-tab">
                     <div class="section-header">
                         <h2 class="section-title">System Architecture</h2>
                         <p class="section-description">
@@ -637,7 +637,7 @@
                 </div>
 
                 <!-- Patent Claims Tab -->
-                <div id="claims" class="tab-content">
+                <div id="claims" class="tab-content" role="tabpanel" aria-labelledby="claims-tab">
                     <div class="section-header">
                         <h2 class="section-title">20 Claims Covering the Complete System, Methods, and Implementations</h2>
                         <p class="section-description">
@@ -698,7 +698,7 @@
                 </div>
 
                 <!-- Innovation Impact Tab -->
-                <div id="innovation" class="tab-content">
+                <div id="innovation" class="tab-content" role="tabpanel" aria-labelledby="innovation-tab">
                     <div class="section-header">
                         <h2 class="section-title">Innovation Impact</h2>
                         <p class="section-description">

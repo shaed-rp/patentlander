@@ -250,6 +250,16 @@ body {
 .nav-wrapper {
     background: var(--light);
     border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.nav-wrapper.sticky {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: rgba(249, 250, 251, 0.95);
+    backdrop-filter: blur(10px);
 }
 
 .nav-tabs {
@@ -257,6 +267,7 @@ body {
     overflow-x: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--primary-light) var(--light);
+    padding: 0 1rem;
 }
 
 .nav-tab {
@@ -268,22 +279,31 @@ body {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--gray);
-    transition: var(--transition);
+    transition: all 0.3s ease;
     position: relative;
     white-space: nowrap;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    border-radius: 8px 8px 0 0;
+    margin: 0 2px;
 }
 
 .nav-tab:hover {
     background: rgba(99, 102, 241, 0.05);
     color: var(--primary);
+    transform: translateY(-1px);
+}
+
+.nav-tab:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 .nav-tab.active {
     color: var(--primary);
     background: white;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .nav-tab.active::after {
@@ -294,10 +314,16 @@ body {
     right: 0;
     height: 3px;
     background: var(--gradient-primary);
+    border-radius: 2px 2px 0 0;
 }
 
 .nav-icon {
     font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.nav-tab:hover .nav-icon {
+    transform: scale(1.1);
 }
 
 /* Content Area */
@@ -308,16 +334,15 @@ body {
 
 .tab-content {
     display: none;
-    animation: fadeIn 0.5s ease;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
 }
 
 .tab-content.active {
     display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Section Headers */

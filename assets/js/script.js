@@ -16,31 +16,98 @@ function initializeApp() {
 function initializeTabNavigation() {
     const navTabs = document.querySelectorAll('.nav-tab');
     const tabContents = document.querySelectorAll('.tab-content');
-
+    const navWrapper = document.querySelector('.nav-wrapper');
+    
+    // Unified tab change handler
+    const handleTabChange = (tabId) => {
+        // Remove active class from all tabs and contents
+        navTabs.forEach(tab => {
+            tab.classList.remove('active');
+            tab.setAttribute('aria-selected', 'false');
+            tab.setAttribute('tabindex', '-1');
+        });
+        
+        tabContents.forEach(content => {
+            content.classList.remove('active');
+        });
+        
+        // Add active class to target tab and content
+        const targetTab = document.querySelector(`[data-tab="${tabId}"]`);
+        const targetContent = document.getElementById(tabId);
+        
+        if (targetTab && targetContent) {
+            targetTab.classList.add('active');
+            targetTab.setAttribute('aria-selected', 'true');
+            targetTab.setAttribute('tabindex', '0');
+            targetContent.classList.add('active');
+        }
+    };
+    
+    // Add click handlers to all tabs
     navTabs.forEach(tab => {
         tab.addEventListener('click', function() {
             const targetTab = this.getAttribute('data-tab');
-            
-            // Remove active class from all tabs and contents
-            navTabs.forEach(t => t.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-            
-            // Add active class to clicked tab and corresponding content
-            this.classList.add('active');
-            const targetContent = document.getElementById(targetTab);
-            if (targetContent) {
-                targetContent.classList.add('active');
+            handleTabChange(targetTab);
+        });
+        
+        // Keyboard navigation
+        tab.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const targetTab = this.getAttribute('data-tab');
+                handleTabChange(targetTab);
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                e.preventDefault();
+                const currentIndex = Array.from(navTabs).indexOf(this);
+                let nextIndex;
+                
+                if (e.key === 'ArrowLeft') {
+                    nextIndex = currentIndex > 0 ? currentIndex - 1 : navTabs.length - 1;
+                } else {
+                    nextIndex = currentIndex < navTabs.length - 1 ? currentIndex + 1 : 0;
+                }
+                
+                const nextTab = navTabs[nextIndex];
+                const nextTabId = nextTab.getAttribute('data-tab');
+                handleTabChange(nextTabId);
+                nextTab.focus();
             }
-            
-            // Add smooth transition effect
-            setTimeout(() => {
-                targetContent.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'nearest' 
-                });
-            }, 100);
         });
     });
+    
+    // Sticky navigation behavior
+    let isSticky = false;
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (isSticky) {
+                        navWrapper.classList.remove('sticky');
+                        isSticky = false;
+                    }
+                } else {
+                    if (!isSticky) {
+                        navWrapper.classList.add('sticky');
+                        isSticky = true;
+                    }
+                }
+            });
+        },
+        { threshold: 0 }
+    );
+    
+    // Create a sentinel element to observe
+    const sentinel = document.createElement('div');
+    sentinel.style.height = '1px';
+    sentinel.style.position = 'absolute';
+    sentinel.style.top = '0';
+    sentinel.style.left = '0';
+    sentinel.style.width = '100%';
+    sentinel.style.pointerEvents = 'none';
+    
+    // Insert sentinel before the nav wrapper
+    navWrapper.parentNode.insertBefore(sentinel, navWrapper);
+    observer.observe(sentinel);
 }
 
 // Process Stage Filtering
