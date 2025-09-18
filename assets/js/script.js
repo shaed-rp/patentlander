@@ -70,7 +70,10 @@ function initializeTabNavigation() {
         const targetTab = document.querySelector(`[data-tab="${tabId}"]`);
         const targetContent = document.getElementById(tabId);
         
-        if (!targetTab || !targetContent) return;
+        if (!targetTab || !targetContent) {
+            console.warn(`Tab navigation: Could not find tab "${tabId}" or its content`);
+            return;
+        }
         
         // If already active, do nothing
         if (targetTab.classList.contains('active')) return;
@@ -198,6 +201,20 @@ function initializeTabNavigation() {
     // Insert sentinel before the nav wrapper
     navWrapper.parentNode.insertBefore(sentinel, navWrapper);
     observer.observe(sentinel);
+    
+    // Verify all tabs are properly configured
+    const expectedTabs = ['overview', 'process', 'matrix', 'data', 'architecture', 'claims', 'innovation'];
+    const missingTabs = expectedTabs.filter(tabId => {
+        const tab = document.querySelector(`[data-tab="${tabId}"]`);
+        const content = document.getElementById(tabId);
+        return !tab || !content;
+    });
+    
+    if (missingTabs.length > 0) {
+        console.warn('Tab navigation: Missing tabs or content:', missingTabs);
+    } else {
+        console.log('Tab navigation: All 7 tabs properly configured');
+    }
 }
 
 // Enhanced Process Stage Filtering with Professional Animations

@@ -529,6 +529,18 @@ body {
     height: 3px;
     background: var(--gradient-primary);
     border-radius: 2px 2px 0 0;
+    animation: activeTabIndicator 0.3s ease-out;
+}
+
+@keyframes activeTabIndicator {
+    0% {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
 }
 
 .nav-icon {
