@@ -158,6 +158,13 @@ html {
     --font-semibold: 600;
     --font-bold: 700;
     --font-extrabold: 800;
+    
+    /* Highlight Box Colors - Consistent Professional Style */
+    --highlight-bg: rgba(147, 51, 234, 0.08);
+    --highlight-border: rgba(147, 51, 234, 0.25);
+    --highlight-icon: #9333ea;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
 }
 
 /* Body and Base Typography */
@@ -1150,14 +1157,6 @@ body {
 }
 
 /* Innovation Impact */
-.innovation-transformation {
-    background: var(--primary-light);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    margin: 2rem 0;
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-}
 
 .transformation-header {
     display: flex;
@@ -1167,7 +1166,8 @@ body {
 
 .transformation-icon {
     font-size: 2.5rem;
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--highlight-bg);
+    border: 2px solid var(--highlight-border);
     border-radius: 50%;
     width: 70px;
     height: 70px;
@@ -1177,16 +1177,22 @@ body {
     flex-shrink: 0;
 }
 
-.transformation-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: white;
+.transformation-title,
+.highlight-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
 }
 
-.transformation-description {
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.6;
+.transformation-description,
+.highlight-content {
+    color: var(--text-secondary);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
     margin: 0;
 }
 
@@ -1711,26 +1717,16 @@ body {
     line-height: 1;
 }
 
-/* Highlight Box */
-.highlight-box {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
-    border: 2px solid var(--primary-light);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    margin: 1.5rem 0;
+/* Highlight Box - Consistent Professional Style */
+.highlight-box,
+.innovation-transformation {
+    background: var(--highlight-bg);
+    border: 1.5px solid var(--highlight-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin: var(--space-6) 0;
 }
 
-.highlight-title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--primary-dark);
-    margin-bottom: 0.75rem;
-}
-
-.highlight-content {
-    color: var(--dark);
-    line-height: 1.6;
-}
 
 /* Utilities */
 .hidden { 
