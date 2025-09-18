@@ -243,15 +243,19 @@ body {
 .logo {
     width: 60px;
     height: 60px;
-    background: var(--gradient-primary);
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
-    color: white;
-    font-weight: bold;
     box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 15px;
 }
 
 .title-block {
