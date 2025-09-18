@@ -704,6 +704,124 @@ body {
     font-size: 0.95rem;
 }
 
+/* Patent Claims */
+.claims-structure {
+    background: var(--primary);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    color: white;
+}
+
+.claims-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.claims-icon {
+    font-size: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.claims-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.claims-description {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.claims-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.claim-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    border: 2px solid #e5e7eb;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.claim-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.claim-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.claim-card:hover::before {
+    transform: scaleX(1);
+}
+
+.claim-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.claim-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+}
+
+.claim-description {
+    color: var(--gray);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.claim-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.claim-features li {
+    padding: 0.5rem 0;
+    color: var(--dark);
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.claim-features li:last-child {
+    border-bottom: none;
+}
+
 /* Modal */
 .modal {
     display: none;
