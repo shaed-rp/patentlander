@@ -1148,45 +1148,7 @@ body {
     font-size: 0.95rem;
 }
 
-/* Patent Claims */
-.claims-structure {
-    background: var(--primary);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    margin: 2rem 0;
-    color: white;
-}
-
-.claims-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.claims-icon {
-    font-size: 2rem;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.claims-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: white;
-}
-
-.claims-description {
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.6;
-    margin: 0;
-}
+/* Patent Claims - Now using consistent innovation-transformation styling */
 
 .claims-grid {
     display: grid;
