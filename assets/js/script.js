@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeApp() {
+    // Initialize performance optimizations first
+    initializePerformanceOptimizations();
+    
+    // Initialize core features
     initializeTabNavigation();
     initializeProcessFiltering();
     initializeModalSystem();
@@ -12,43 +16,129 @@ function initializeApp() {
     initializeResponsiveFeatures();
 }
 
-// Tab Navigation System
+// Performance Optimizations
+function initializePerformanceOptimizations() {
+    // Preload critical resources
+    const criticalImages = document.querySelectorAll('img[data-preload]');
+    criticalImages.forEach(img => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = img.src;
+        document.head.appendChild(link);
+    });
+    
+    // Optimize scroll performance
+    let ticking = false;
+    function updateScrollElements() {
+        // Batch DOM updates for better performance
+        ticking = false;
+    }
+    
+    function requestScrollUpdate() {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollElements);
+            ticking = true;
+        }
+    }
+    
+    // Use passive scroll listeners for better performance
+    window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+    
+    // Optimize resize events
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(updateScrollElements, 100);
+    }, { passive: true });
+}
+
+// Professional Tab Navigation System - No Blinking
 function initializeTabNavigation() {
     const navTabs = document.querySelectorAll('.nav-tab');
     const tabContents = document.querySelectorAll('.tab-content');
     const navWrapper = document.querySelector('.nav-wrapper');
+    const contentWrapper = document.querySelector('.content-wrapper');
     
-    // Unified tab change handler
+    // Debounce rapid clicks to prevent animation conflicts
+    let isTransitioning = false;
+    
+    // Professional crossfade tab change handler
     const handleTabChange = (tabId) => {
-        // Remove active class from all tabs and contents
+        if (isTransitioning) return;
+        
+        const targetTab = document.querySelector(`[data-tab="${tabId}"]`);
+        const targetContent = document.getElementById(tabId);
+        
+        if (!targetTab || !targetContent) return;
+        
+        // If already active, do nothing
+        if (targetTab.classList.contains('active')) return;
+        
+        isTransitioning = true;
+        
+        // Update tab states immediately for responsive feel
         navTabs.forEach(tab => {
             tab.classList.remove('active');
             tab.setAttribute('aria-selected', 'false');
             tab.setAttribute('tabindex', '-1');
         });
         
-        tabContents.forEach(content => {
-            content.classList.remove('active');
-        });
+        targetTab.classList.add('active');
+        targetTab.setAttribute('aria-selected', 'true');
+        targetTab.setAttribute('tabindex', '0');
         
-        // Add active class to target tab and content
-        const targetTab = document.querySelector(`[data-tab="${tabId}"]`);
-        const targetContent = document.getElementById(tabId);
+        // Smooth crossfade between content
+        const currentActive = document.querySelector('.tab-content.active');
         
-        if (targetTab && targetContent) {
-            targetTab.classList.add('active');
-            targetTab.setAttribute('aria-selected', 'true');
-            targetTab.setAttribute('tabindex', '0');
+        if (currentActive && currentActive !== targetContent) {
+            // Fade out current content
+            currentActive.style.transition = 'opacity 150ms ease-out, transform 150ms ease-out';
+            currentActive.style.opacity = '0';
+            currentActive.style.transform = 'translateY(-4px)';
+            
+            // After fade out, switch content and fade in
+            setTimeout(() => {
+                currentActive.classList.remove('active');
+                targetContent.classList.add('active');
+                
+                // Fade in new content
+                targetContent.style.transition = 'opacity 200ms ease-out, transform 200ms ease-out';
+                targetContent.style.opacity = '1';
+                targetContent.style.transform = 'translateY(0)';
+                
+                // Reset transition after animation
+                setTimeout(() => {
+                    targetContent.style.transition = '';
+                    targetContent.style.opacity = '';
+                    targetContent.style.transform = '';
+                    isTransitioning = false;
+                }, 200);
+            }, 150);
+        } else {
+            // First load or same tab
             targetContent.classList.add('active');
+            targetContent.style.transition = 'opacity 200ms ease-out, transform 200ms ease-out';
+            targetContent.style.opacity = '1';
+            targetContent.style.transform = 'translateY(0)';
+            
+            setTimeout(() => {
+                targetContent.style.transition = '';
+                targetContent.style.opacity = '';
+                targetContent.style.transform = '';
+                isTransitioning = false;
+            }, 200);
         }
     };
     
-    // Add click handlers to all tabs
+    // Add click handlers to all tabs with performance optimization
     navTabs.forEach(tab => {
-        tab.addEventListener('click', function() {
+        // Use passive listeners for better performance
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
             const targetTab = this.getAttribute('data-tab');
             handleTabChange(targetTab);
-        });
+        }, { passive: false });
         
         // Keyboard navigation
         tab.addEventListener('keydown', function(e) {
