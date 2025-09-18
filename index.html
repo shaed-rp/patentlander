@@ -221,14 +221,32 @@
                         </p>
                     </div>
 
-                    <div class="timeline-controls">
-                        <button class="stage-btn active" data-stage="all">All Stages</button>
-                        <button class="stage-btn" data-stage="ingestion">Data Ingestion</button>
-                        <button class="stage-btn" data-stage="processing">AI Processing</button>
-                        <button class="stage-btn" data-stage="output">Output & Actions</button>
-                    </div>
+                            <div class="timeline-controls">
+                                <button class="stage-btn active" data-stage="all">All Stages (18)</button>
+                                <button class="stage-btn" data-stage="ingestion">Data Acquisition (6)</button>
+                                <button class="stage-btn" data-stage="processing">ML Processing (6)</button>
+                                <button class="stage-btn" data-stage="output">Integration & Output (6)</button>
+                            </div>
+                            
+                            <div class="process-overview">
+                                <div class="overview-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-number">18</span>
+                                        <span class="stat-label">Total Process Boxes</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">3</span>
+                                        <span class="stat-label">Processing Stages</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">1000+</span>
+                                        <span class="stat-label">Data Sources</span>
+                                    </div>
+                                </div>
+                            </div>
 
                     <div class="process-grid">
+                        <!-- Stage 1: Data Acquisition (6 boxes) -->
                         <div class="process-card" data-stage="ingestion">
                             <div class="process-header">
                                 <div class="process-number">1</div>
@@ -286,6 +304,64 @@
                             </div>
                         </div>
 
+                        <div class="process-card" data-stage="ingestion">
+                            <div class="process-header">
+                                <div class="process-number">102</div>
+                                <div class="process-title">Initiate Data Acquisition</div>
+                            </div>
+                            <div class="process-description">
+                                Centralized orchestration of data collection processes across all input sources and systems.
+                            </div>
+                            <ul class="process-features">
+                                <li>Multi-source coordination</li>
+                                <li>Data pipeline orchestration</li>
+                                <li>Quality assurance protocols</li>
+                            </ul>
+                            <div class="process-tags">
+                                <span class="tag">Orchestration</span>
+                                <span class="tag critical">Critical</span>
+                            </div>
+                        </div>
+
+                        <div class="process-card" data-stage="ingestion">
+                            <div class="process-header">
+                                <div class="process-number">104</div>
+                                <div class="process-title">Extract Features</div>
+                            </div>
+                            <div class="process-description">
+                                Advanced feature engineering and extraction from raw data to create meaningful ML inputs.
+                            </div>
+                            <ul class="process-features">
+                                <li>Feature engineering</li>
+                                <li>Dimensionality reduction</li>
+                                <li>Pattern recognition</li>
+                            </ul>
+                            <div class="process-tags">
+                                <span class="tag">ML</span>
+                                <span class="tag ai">AI-Powered</span>
+                            </div>
+                        </div>
+
+                        <div class="process-card" data-stage="ingestion">
+                            <div class="process-header">
+                                <div class="process-number">106</div>
+                                <div class="process-title">Dataset Creation</div>
+                            </div>
+                            <div class="process-description">
+                                Intelligent dataset assembly and preparation for machine learning model training and validation.
+                            </div>
+                            <ul class="process-features">
+                                <li>Data preprocessing</li>
+                                <li>Train/test splitting</li>
+                                <li>Validation sets</li>
+                            </ul>
+                            <div class="process-tags">
+                                <span class="tag">Data Science</span>
+                                <span class="tag ai">ML-Prepared</span>
+                            </div>
+                        </div>
+
+                        <!-- Stage 2: ML Processing (6 boxes) -->
                         <div class="process-card" data-stage="processing">
                             <div class="process-header">
                                 <div class="process-number">4</div>
@@ -343,6 +419,64 @@
                             </div>
                         </div>
 
+                        <div class="process-card" data-stage="processing">
+                            <div class="process-header">
+                                <div class="process-number">108</div>
+                                <div class="process-title">Train ML Models</div>
+                            </div>
+                            <div class="process-description">
+                                Continuous training and optimization of machine learning models for improved accuracy and performance.
+                            </div>
+                            <ul class="process-features">
+                                <li>Model training pipelines</li>
+                                <li>Hyperparameter optimization</li>
+                                <li>Performance monitoring</li>
+                            </ul>
+                            <div class="process-tags">
+                                <span class="tag ai">ML Training</span>
+                                <span class="tag critical">Critical</span>
+                            </div>
+                        </div>
+
+                        <div class="process-card" data-stage="processing">
+                            <div class="process-header">
+                                <div class="process-number">384</div>
+                                <div class="process-title">SHAED ETL Process</div>
+                            </div>
+                            <div class="process-description">
+                                Proprietary Extract, Transform, Load pipeline for processing and normalizing diverse data sources.
+                            </div>
+                            <ul class="process-features">
+                                <li>Data transformation</li>
+                                <li>Schema mapping</li>
+                                <li>Quality validation</li>
+                            </ul>
+                            <div class="process-tags">
+                                <span class="tag">ETL</span>
+                                <span class="tag ai">Proprietary</span>
+                            </div>
+                        </div>
+
+                        <div class="process-card" data-stage="processing">
+                            <div class="process-header">
+                                <div class="process-number">388</div>
+                                <div class="process-title">Contextual Processing</div>
+                            </div>
+                            <div class="process-description">
+                                Advanced contextual analysis and processing to understand relationships and dependencies in data.
+                            </div>
+                            <ul class="process-features">
+                                <li>Context awareness</li>
+                                <li>Relationship mapping</li>
+                                <li>Semantic understanding</li>
+                            </ul>
+                            <div class="process-tags">
+                                <span class="tag ai">Context AI</span>
+                                <span class="tag">Advanced</span>
+                            </div>
+                        </div>
+
+                        <!-- Stage 3: Integration & Output (6 boxes) -->
                         <div class="process-card" data-stage="output">
                             <div class="process-header">
                                 <div class="process-number">7</div>
@@ -378,6 +512,82 @@
                             <div class="process-tags">
                                 <span class="tag">Pricing</span>
                                 <span class="tag ai">Dynamic AI</span>
+                            </div>
+                        </div>
+
+                        <div class="process-card" data-stage="output">
+                            <div class="process-header">
+                                <div class="process-number">382</div>
+                                <div class="process-title">Data Input Gateway</div>
+                            </div>
+                            <div class="process-description">
+                                Secure, scalable gateway for receiving and validating input data from external systems and APIs.
+                            </div>
+                            <ul class="process-features">
+                                <li>API gateway</li>
+                                <li>Data validation</li>
+                                <li>Security protocols</li>
+                            </ul>
+                            <div class="process-tags">
+                                <span class="tag">Gateway</span>
+                                <span class="tag critical">Critical</span>
+                            </div>
+                        </div>
+
+                        <div class="process-card" data-stage="output">
+                            <div class="process-header">
+                                <div class="process-number">386</div>
+                                <div class="process-title">Parse Input Data</div>
+                            </div>
+                            <div class="process-description">
+                                Intelligent parsing and interpretation of incoming data streams with format detection and validation.
+                            </div>
+                            <ul class="process-features">
+                                <li>Format detection</li>
+                                <li>Data parsing</li>
+                                <li>Error handling</li>
+                            </ul>
+                            <div class="process-tags">
+                                <span class="tag">Parser</span>
+                                <span class="tag ai">Intelligent</span>
+                            </div>
+                        </div>
+
+                        <div class="process-card" data-stage="output">
+                            <div class="process-header">
+                                <div class="process-number">390</div>
+                                <div class="process-title">LLM Integration</div>
+                            </div>
+                            <div class="process-description">
+                                Large Language Model integration for natural language processing and intelligent text analysis.
+                            </div>
+                            <ul class="process-features">
+                                <li>NLP processing</li>
+                                <li>Text analysis</li>
+                                <li>Language understanding</li>
+                            </ul>
+                            <div class="process-tags">
+                                <span class="tag ai">LLM</span>
+                                <span class="tag">NLP</span>
+                            </div>
+                        </div>
+
+                        <div class="process-card" data-stage="output">
+                            <div class="process-header">
+                                <div class="process-number">392</div>
+                                <div class="process-title">Generate Insights</div>
+                            </div>
+                            <div class="process-description">
+                                Advanced analytics engine that generates actionable insights and business intelligence from processed data.
+                            </div>
+                            <ul class="process-features">
+                                <li>Insight generation</li>
+                                <li>Pattern analysis</li>
+                                <li>Business intelligence</li>
+                            </ul>
+                            <div class="process-tags">
+                                <span class="tag ai">Analytics</span>
+                                <span class="tag">Insights</span>
                             </div>
                         </div>
                     </div>

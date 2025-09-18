@@ -533,9 +533,45 @@ body {
 .timeline-controls {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
     flex-wrap: wrap;
+}
+
+/* Process Overview Stats */
+.process-overview {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-8);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.overview-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-6);
+    text-align: center;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.stat-number {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--primary);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: var(--text-sm);
+    color: var(--gray);
+    font-weight: var(--font-medium);
 }
 
 .stage-btn {
@@ -563,10 +599,75 @@ body {
 }
 
 /* Process Cards */
+/* Process Grid - Optimized for 18 boxes */
 .process-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Enhanced grid for larger screens */
+@media (min-width: 1200px) {
+    .process-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-8);
+    }
+}
+
+/* Stage-based organization */
+.process-card[data-stage="ingestion"] {
+    border-left: 4px solid #10b981; /* Green for data acquisition */
+}
+
+.process-card[data-stage="processing"] {
+    border-left: 4px solid #6366f1; /* Blue for ML processing */
+}
+
+.process-card[data-stage="output"] {
+    border-left: 4px solid #f59e0b; /* Orange for output */
+}
+
+/* Filtering animations */
+.process-grid.filtering {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.process-card {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Enhanced responsive design for 18 boxes */
+@media (max-width: 768px) {
+    .process-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+    
+    .overview-stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+    
+    .timeline-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stage-btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1199px) {
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-5);
+    }
 }
 
 /* Unified Card System - Professional Components */

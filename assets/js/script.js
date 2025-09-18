@@ -204,6 +204,7 @@ function initializeTabNavigation() {
 function initializeProcessFiltering() {
     const stageButtons = document.querySelectorAll('.stage-btn');
     const processCards = document.querySelectorAll('.process-card');
+    const processGrid = document.querySelector('.process-grid');
 
     stageButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -213,17 +214,60 @@ function initializeProcessFiltering() {
             stageButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             
-            // Filter process cards
-            processCards.forEach(card => {
-                const cardStage = card.getAttribute('data-stage');
+            // Add loading state to grid
+            processGrid.classList.add('filtering');
+            
+            // Use requestAnimationFrame for smooth transitions
+            requestAnimationFrame(() => {
+                // Filter process cards with smooth animation
+                processCards.forEach((card, index) => {
+                    const cardStage = card.getAttribute('data-stage');
+                    const shouldShow = targetStage === 'all' || cardStage === targetStage;
+                    
+                    // Stagger animations for better visual effect
+                    setTimeout(() => {
+                        if (shouldShow) {
+                            card.style.display = 'block';
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            
+                            // Animate in
+                            requestAnimationFrame(() => {
+                                card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            });
+                        } else {
+                            // Animate out
+                            card.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(-10px)';
+                            
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 200);
+                        }
+                    }, index * 50); // Stagger by 50ms per card
+                });
                 
-                if (targetStage === 'all' || cardStage === targetStage) {
-                    card.style.display = 'block';
-                    card.style.animation = 'fadeIn 0.5s ease';
-                } else {
-                    card.style.display = 'none';
-                }
+                // Remove loading state
+                setTimeout(() => {
+                    processGrid.classList.remove('filtering');
+                }, 1000);
             });
+        });
+    });
+    
+    // Add smooth scroll to top when filtering
+    stageButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const processSection = document.querySelector('#process');
+            if (processSection) {
+                processSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
         });
     });
 }
