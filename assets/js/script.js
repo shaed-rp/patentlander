@@ -200,77 +200,124 @@ function initializeTabNavigation() {
     observer.observe(sentinel);
 }
 
-// Process Stage Filtering
+// Enhanced Process Stage Filtering with Professional Animations
 function initializeProcessFiltering() {
     const stageButtons = document.querySelectorAll('.stage-btn');
     const processCards = document.querySelectorAll('.process-card');
     const processGrid = document.querySelector('.process-grid');
+    const processOverview = document.querySelector('.process-overview');
 
     stageButtons.forEach(button => {
         button.addEventListener('click', function() {
             const targetStage = this.getAttribute('data-stage');
             
-            // Remove active class from all stage buttons
-            stageButtons.forEach(btn => btn.classList.remove('active'));
+            // Prevent rapid clicking
+            if (processGrid.classList.contains('filtering')) return;
+            
+            // Remove active class from all stage buttons with smooth transition
+            stageButtons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.transform = 'translateY(0)';
+            });
+            
+            // Add active class with enhanced styling
             this.classList.add('active');
             
-            // Add loading state to grid
+            // Add loading state to grid with spinner
             processGrid.classList.add('filtering');
             
-            // Use requestAnimationFrame for smooth transitions
+            // Update overview stats with animation
+            if (processOverview) {
+                processOverview.style.opacity = '0.7';
+                processOverview.style.transform = 'translateY(-10px)';
+            }
+            
+            // Enhanced filtering with sophisticated animations
             requestAnimationFrame(() => {
-                // Filter process cards with smooth animation
+                const visibleCards = Array.from(processCards).filter(card => {
+                    const cardStage = card.getAttribute('data-stage');
+                    return targetStage === 'all' || cardStage === targetStage;
+                });
+                
+                // Phase 1: Exit animations for cards that will be hidden
                 processCards.forEach((card, index) => {
                     const cardStage = card.getAttribute('data-stage');
                     const shouldShow = targetStage === 'all' || cardStage === targetStage;
                     
-                    // Stagger animations for better visual effect
-                    setTimeout(() => {
-                        if (shouldShow) {
-                            card.style.display = 'block';
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(20px)';
-                            
-                            // Animate in
-                            requestAnimationFrame(() => {
-                                card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            });
-                        } else {
-                            // Animate out
-                            card.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(-10px)';
-                            
-                            setTimeout(() => {
-                                card.style.display = 'none';
-                            }, 200);
-                        }
-                    }, index * 50); // Stagger by 50ms per card
+                    if (!shouldShow) {
+                        // Enhanced exit animation
+                        card.classList.add('exiting');
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                            card.classList.remove('exiting');
+                        }, 300);
+                    }
                 });
                 
-                // Remove loading state
+                // Phase 2: Entrance animations for visible cards
+                setTimeout(() => {
+                    visibleCards.forEach((card, index) => {
+                        card.style.display = 'block';
+                        card.classList.add('entering');
+                        
+                        // Staggered entrance with sophisticated timing
+                        setTimeout(() => {
+                            card.classList.remove('entering');
+                        }, 500);
+                    }, index * 80); // Increased stagger for better effect
+                }, 200);
+                
+                // Phase 3: Cleanup and final state
                 setTimeout(() => {
                     processGrid.classList.remove('filtering');
-                }, 1000);
+                    
+                    // Restore overview stats
+                    if (processOverview) {
+                        processOverview.style.opacity = '1';
+                        processOverview.style.transform = 'translateY(0)';
+                    }
+                    
+                    // Add subtle pulse to active button
+                    const activeButton = document.querySelector('.stage-btn.active');
+                    if (activeButton) {
+                        activeButton.style.animation = 'pulse 0.6s ease-out';
+                        setTimeout(() => {
+                            activeButton.style.animation = '';
+                        }, 600);
+                    }
+                }, 800);
             });
         });
     });
     
-    // Add smooth scroll to top when filtering
+    // Enhanced smooth scroll with offset for better UX
     stageButtons.forEach(button => {
         button.addEventListener('click', function() {
             const processSection = document.querySelector('#process');
             if (processSection) {
-                processSection.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start' 
-                });
+                // Add slight delay for better visual flow
+                setTimeout(() => {
+                    processSection.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start',
+                        inline: 'nearest'
+                    });
+                }, 100);
             }
         });
     });
 }
+
+// Add pulse animation for active button feedback
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes pulse {
+        0% { transform: translateY(-2px) scale(1); }
+        50% { transform: translateY(-4px) scale(1.05); }
+        100% { transform: translateY(-2px) scale(1); }
+    }
+`;
+document.head.appendChild(style);
 
 // Modal System
 function initializeModalSystem() {
