@@ -251,6 +251,24 @@ body {
     overflow: hidden;
 }
 
+.logo a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.logo a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.logo a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
 .logo-image {
     width: 100%;
     height: 100%;
