@@ -298,6 +298,11 @@ body {
 
 .patent-details {
     margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: stretch;
+    justify-content: space-between;
 }
 
 .detail-card {
@@ -305,6 +310,14 @@ body {
     border: 1px solid #e5e7eb;
     transition: var(--transition);
     min-height: 120px;
+    flex: 1;
+    min-width: 220px;
+    max-width: 280px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .detail-card:hover {
@@ -1952,8 +1965,24 @@ body {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+    .patent-details {
+        justify-content: center;
+    }
+    
     .detail-card {
         min-width: 200px;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 900px) {
+    .patent-details {
+        gap: 1rem;
+    }
+    
+    .detail-card {
+        min-width: 180px;
+        max-width: 220px;
     }
 }
 
@@ -2004,10 +2033,12 @@ body {
     
     .patent-details {
         flex-direction: column;
+        align-items: center;
     }
     
     .detail-card {
         min-width: unset;
+        max-width: unset;
         width: 100%;
     }
 }
